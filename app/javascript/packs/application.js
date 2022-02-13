@@ -7,7 +7,32 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import '../stylesheets/application'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+require("trix")
+require("@rails/actiontext")
+
+
+document.addEventListener('turbolinks:load', () => {
+  document.addEventListener('click', () => {
+    let element = event.target.closest('.paragraph-content')
+    if (!element) return;
+
+    element.classList.add('d-none')
+    element.nextElementSibling.classList.remove('d-none')
+  })
+
+  document.addEventListener('click', () => {
+    if (!event.target.matches('.cancel')) return;
+
+    let element = event.target.closest('.paragraph-form')
+
+    element.classList.add('d-none')
+    element.previousElementSibling.classList.remove('d-none')
+  })
+})

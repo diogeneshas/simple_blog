@@ -13,8 +13,6 @@ module Authors
         notice = @element.errors.full_messages.join(". ") << "."
       end
         redirect_to edit_post_path(@post), notice: notice
-
-
     end
 
     # PATCH/PUT /elements/1
